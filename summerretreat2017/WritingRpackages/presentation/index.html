@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title></title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css"/>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="reveal.js/css/theme/moon.css" id="theme">
+  <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+  <script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = 'reveal.js/css/print/pdf.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <style type="text/css">
+  		.reveal h1 { font-size: 1.5em; }
+  		.reveal h2 { font-size: 1em; }
+  
+   .reveal img{border-style: none;}
+  
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+
+<section id="writing-r-packages" class="level1">
+<h1>Writing R packages</h1>
+<section id="section" class="level2">
+<h2></h2>
+<p>SUMMERRETREAT 2017</p>
+<p>Marvin Reich</p>
+</section>
+<section id="why" class="level2">
+<h2>why?</h2>
+<p>there are a lot of good reason why you should write your own R package:</p>
+<ul>
+<li>document your own code</li>
+<li>force yourself to keep your own code organized with a certain structure</li>
+<li>share code with other</li>
+<li>easily transfer parts of your publication-analysis-methods with interested scientists so your methods can be applied easily</li>
+</ul>
+</section>
+<section id="what-do-i-need" class="level2">
+<h2>what do I need?</h2>
+<p>not much actually:</p>
+<ul>
+<li>devtools</li>
+<li>roxygen2</li>
+<li>github account (optional)</li>
+</ul>
+</section>
+<section id="what-is-the-best-approach-to-write-an-r-package" class="level2">
+<h2>what is the best approach to write an R package</h2>
+<p>having in mind the reasons / goals for writing packages, i think the most important advice is: <span style="color:orange">JUST GET STARTED</span> !</p>
+<ul>
+<li>playing around a little (like today) to get confidence</li>
+<li>start maybe with documenting your functions</li>
+<li>then one comes to the other...</li>
+</ul>
+<p>when you have some experience and commited some errors, you will much more likely be able to construct a &quot;big project&quot; rather than thinking in your first steps everything to be already perfect</p>
+</section>
+</section>
+<section id="basic-structure-of-an-r-package" class="level1">
+<h1>basic structure of an R package</h1>
+<section id="section-1" class="level2">
+<h2></h2>
+<p>there are actually only 2 things you need for a minimalistic package:</p>
+<ul>
+<li>a DESCRIPTION file</li>
+<li>a folder called 'R' for the code</li>
+</ul>
+<p>if you have ever unzipped a CRAN R package, you might remember a stucture like the following</p>
+<figure>
+<img src="./Rpackage_structure.png" />
+</figure>
+</section>
+<section id="description-file" class="level2">
+<h2>DESCRIPTION file</h2>
+<figure>
+<img src="./description_file.png" />
+</figure>
+</section>
+<section id="create-empty-package-structure" class="level2">
+<h2>create empty package structure</h2>
+<p>you can easily create a template package structure from within R</p>
+<p>just set the correct working directory where you want your package folder to be created, load devtools and use the create function</p>
+<pre><code>library(devtools)
+create(&quot;PACKAGENAME&quot;)</code></pre>
+</section>
+</section>
+<section id="hands-on-1" class="level1">
+<h1>hands-on (1)</h1>
+<ul>
+<li><span style="color:orange"> create everything obligatory for an R package in a folder </span></li>
+</ul>
+</section>
+<section id="functions" class="level1">
+<h1>functions</h1>
+<section id="section-2" class="level2">
+<h2></h2>
+<p>data analysis means writing code. and code you re-use quite frequently will then be (hopefully) written as a function.</p>
+<p><span style="color:orange">when your stack of functions for your data analysis is just growing too big</span> and everything seems an incomprehensible mess, this is probably the most common point when people start working on a package.</p>
+<p><span style="color:orange">functions within an R package go into the 'R' folder</span>. there can be one file per function or you can put all one file for all functions or whatever you want in between.</p>
+</section>
+<section id="writing-comments" class="level2">
+<h2>writing &amp; comments</h2>
+<p>at this point, before just copy-pasting all these functions into your package, think of some standards, you might want to keep straight troughout your package.</p>
+<ul>
+<li>your own <span style="color:orange">naming convention for functions</span> (e.g. always start with small letters, separate with _, etc.)</li>
+<li><span style="color:orange">variable naming</span> within your functions (e.g. if you often use soil moisture, decide for one naming throughout all mentioning; not SM, soilM, theta, etc.)</li>
+<li>.. ?</li>
+<li>call other functions using <span style="color:orange">packagename::functionname()</span></li>
+</ul>
+<p>also decide on commenting:</p>
+<ul>
+<li>always above, always at the end of the line</li>
+<li>hierarchical structure of <span style="color:orange">classifying comments</span></li>
+<li></li>
+</ul>
+<p>most of these things can be taken care of with and are controlled by a <span style="color:orange">linter</span></p>
+</section>
+<section id="sticking-help-file-documentation-to-functions" class="level2">
+<h2>sticking help file documentation to functions</h2>
+<p>no matter how you organized your functions in your 'R' folder, its quite handy that you can stick all the information about a functions help, right new to the function code itself. this way you <span style="color:orange">keep code and documentation close together</span> and hopefully directly modify one if the other has changed.</p>
+<p>there is a special type of header where you include all the information for the help file. just <span style="color:orange">place it right above your function code</span> and start filling it.</p>
+<pre><code>#&#39;title short title
+#&#39;
+#&#39; @description describe what exactly your function does, when can and should it be applied, when not. etc.
+#&#39;
+#&#39; @param parametername explanation, standards, units...
+#&#39; 
+#&#39; @return type of value that is given back by your function
+#&#39; 
+#&#39; @details some extra infos; not always necessary
+#&#39; @references Your Name (YYYY), you@@yourhomeserver.de
+#&#39; @examples executable examples of how to use your function;
+#&#39; best when using data which is supplied within your own package</code></pre>
+</section>
+<section id="use-roxygen-to-create-your-help-files" class="level2">
+<h2>use roxygen to create your help files</h2>
+<p>this package reads in all the information you included in these special tagged header above each of your function and automatically <span style="color:orange">create a help file (FunctionName.Rd) within the subfolder &quot;man&quot;</span> in your package folder.</p>
+<p>call this function every time you modified or added a functions documentation.</p>
+<pre><code>library(roxygen2)
+# set correct working directory
+setwd(&quot;PATH/TO/YOUR/PACKAGEFOLDER&quot;)
+document()</code></pre>
+</section>
+</section>
+<section id="hands-on-2" class="level1">
+<h1>hands-on (2)</h1>
+<ul>
+<li><span style="color:orange"> write a function with documentation and let roxygen create the help files </span></li>
+</ul>
+</section>
+<section id="load-check-build-install.." class="level1">
+<h1>load, check, build, install..</h1>
+<section id="section-3" class="level2">
+<h2></h2>
+<p>introduction to some useful functions of the devtools package</p>
+</section>
+<section id="load-a-package-locally" class="level2">
+<h2>load a package locally</h2>
+<p>simulates to install and load a package via 'library()'</p>
+<p>all data in /data folder will also be loaded</p>
+<pre><code>library(devtools)
+load_all(&quot;PATH/TO/YOUR/PACKAGEFOLDER&quot;)</code></pre>
+</section>
+<section id="check" class="level2">
+<h2>check</h2>
+<p>check and builds a package</p>
+<p>this is especially necessary if you want to submit your package to CRAN, as then there should be no errors produced by this command.</p>
+<pre><code>library(devtools)
+check(&quot;PATH/TO/YOUR/PACKAGEFOLDER&quot;)</code></pre>
+</section>
+<section id="build" class="level2">
+<h2>build</h2>
+<p>transforms your package into a single file</p>
+<p>if binary = FALSE (default) this will produce a platform independent 'tar.gz' package installation file. if binary = TRUE, a platform dependent compressed file will be created (e.g. .zip on windows).</p>
+<pre><code>library(devtools)
+build(&quot;PATH/TO/YOUR/PACKAGEFOLDER&quot;)</code></pre>
+</section>
+<section id="install" class="level2">
+<h2>install</h2>
+<p>as the name says, this will permanently install your package on your system</p>
+<pre><code>library(devtools)
+install(&quot;PATH/TO/YOUR/PACKAGEFOLDER&quot;)</code></pre>
+</section>
+<section id="release" class="level2">
+<h2>release</h2>
+<p>this functions runs a couple of checks, asks you questions and then submits your package to CRAN</p>
+<pre><code>library(devtools)
+release(&quot;PATH/TO/YOUR/PACKAGEFOLDER&quot;)</code></pre>
+</section>
+</section>
+<section id="hands-on-3" class="level1">
+<h1>hands-on (3)</h1>
+<ul>
+<li><span style="color:orange"> load your package, test your function and check out its help </span></li>
+</ul>
+</section>
+<section id="what-has-to-be-kept-in-mind" class="level1">
+<h1>what has to be kept in mind</h1>
+<section id="section-4" class="level2">
+<h2></h2>
+<p>besides the minimum package requirements, the following covers roughly what else you might want to include into your package.</p>
+<p>some of these need time to dive into the topic in details but its necessity can be re-decided for every package.</p>
+<p>this listing is not complete, please see links at the end of presenation to find the full list.</p>
+</section>
+<section id="include-data" class="level2">
+<h2>include data</h2>
+<ul>
+<li>for testing your packages functions</li>
+<li>distributing a dataset (e.g. table of certain research results)</li>
+</ul>
+<p>depending on the use-case of the data, they are stored in different locations:</p>
+<ul>
+<li><p>available to user (e.g. example datasets); gets loaded by default; these datasets should be documented; location: <span style="color:orange">data/</span></p>
+<pre><code>devtools::use_data(dataset, PACKAGENAME)</code></pre></li>
+<li><p>not available to user (e.g. functions input etc.); location: <span style="color:orange">R/sysdata.rda</span></p>
+<pre><code>devtools::use_data(dataset, PACKAGENAME, internal = TRUE)</code></pre></li>
+<li><p>raw data (e.g. example scripts, big datasets); location: <span style="color:orange">inst/extdata</span>; access raw datas file path using this code</p>
+<pre><code>system.file(&quot;foldername&quot;, &quot;filename&quot;, package = &quot;PACKAGENAME&quot;)</code></pre></li>
+</ul>
+</section>
+<section id="namespace" class="level2">
+<h2>namespace</h2>
+<ul>
+<li>confusing</li>
+<li>advanced topic</li>
+<li>only necessary when publishing your package</li>
+</ul>
+<p>the NAMESPACE file (in your package root directory) is about <span style="color:orange">imports</span> and <span style="color:orange">exports</span> of functions</p>
+<ul>
+<li>import: needed functions from other packages</li>
+<li>export: make a function usable outside of your package</li>
+<li>is created automatically and watched over by roxygen2</li>
+<li>just include in function documentation using e.g. <span class="citation" data-cites="export">@export</span></li>
+<li>it's recommended to <span style="color:orange">export only a minimal set of functions to avoid possible conflicts</span> with other packages</li>
+</ul>
+<p>always using PACKAGENAME::functionname() keeps you independent of these namespace issues</p>
+</section>
+<section id="vignettes" class="level2">
+<h2>vignettes</h2>
+<p>a longer, more general but <span style="color:orange">detailed description of your package or a sub-process</span></p>
+<ul>
+<li>vignette content: original source, readable versions (HTML, PDF, etc.), file of R code</li>
+<li>look at vignettes of a specific package: ´browseVignettes(&quot;PACKAGENAME&quot;)´</li>
+<li>you can use a vignette engine to create them easily using markdown: <a href="https://yihui.name/knitr/">knitr</a></li>
+</ul>
+<p>usage and <span style="color:orange">workflow within devtools</span> packages:</p>
+<pre><code>devtools::use_vignette(&quot;vignetteNAME&quot;)</code></pre>
+<ol type="1">
+<li>creates vignettes/ directory</li>
+<li>addas dependencies to DESCRIPTION file</li>
+<li>create draft vignette in vignettes/vignetteNAME.Rmd</li>
+</ol>
+<p>now you only have to</p>
+<ol type="1">
+<li>modify it</li>
+<li>knit it again to convert it to readable output</li>
+</ol>
+</section>
+<section id="tests" class="level2">
+<h2>tests</h2>
+<p>just quick repeat: why testing again?</p>
+<p>..fewer bugs, better code structure, robuster code..</p>
+<p>set up package testing:</p>
+<pre><code>devtools::use_testthat()</code></pre>
+<ol type="1">
+<li>creates <span style="color:orange">tests/testthat</span> directory</li>
+<li>includes testthat package in DESCRIPTION file</li>
+<li>creates tests/testthat.R file, which runs when you check your package</li>
+</ol>
+<p>now your good to go:</p>
+<ul>
+<li>write tests <span style="color:orange">(name has to start with 'test')</span></li>
+<li>store them in the tests/testthat folder</li>
+<li><p>test your package using</p>
+<pre><code>devtools::test()</code></pre></li>
+</ul>
+</section>
+<section id="license" class="level2">
+<h2>license</h2>
+<p>defines WHO can do WHAT with your code</p>
+<ul>
+<li>only really important if you want to publish your package</li>
+<li>is stated in a file LICENSE within your package root directory</li>
+<li>is referenced to in the DESCRIPTION file</li>
+<li><span style="color:orange">don't underestimate this topic</span> and to some research !</li>
+<li>suitable for R-packages are: MIT, GPL-2/3, CC0</li>
+<li>if you include code you didn't write yourself, check that this is okay with its license !</li>
+</ul>
+<p>a good start and overview can be found <a href="http://choosealicense.com/licenses/">here</a> and <a href="https://tldrlegal.com/">here</a></p>
+</section>
+<section id="citing-r-packages" class="level2">
+<h2>citing R packages</h2>
+<p>writing, pubishing and therefore also citing software and code used within ones analysis gains more and more attention</p>
+<ul>
+<li><p>if you want to release a package along a publication, give the end-user an easy way how to cite your software</p></li>
+<li><p>find out how to cite a package using:</p>
+<pre><code>citation(&quot;PACKAGENAME&quot;)</code></pre></li>
+<li>these information is given in the <span style="color:orange">CITATION file</span>, which should be <span style="color:orange">located in inst/</span></li>
+<li><p>CITATION file contains: header, bibtext-like entry, footer</p></li>
+</ul>
+</section>
+</section>
+<section id="publicating-your-package" class="level1">
+<h1>publicating your package</h1>
+<section id="section-5" class="level2">
+<h2></h2>
+<p>sharing your package is advantageous, because:</p>
+<ul>
+<li>collegues, project partners can re-use your functions</li>
+<li>you can install them directly on any new machine or machine your are temporarily or spontaneously working</li>
+<li>functions / anaylsis done for a publication can be actually and easily used by scientist interested in your findings</li>
+</ul>
+<p><span style="color:orange">code published along a paper will increase the possible usage and validation of your scientif method</span></p>
+</section>
+<section id="cran" class="level2">
+<h2>CRAN</h2>
+<p>CRAN = Comprehensive R Archive Network, is the main R package repository</p>
+<ul>
+<li>this means, there are quality checks</li>
+<li>you are limited in the <a href="https://svn.r-project.org/R/trunk/share/licenses/license.db">choice of license</a></li>
+</ul>
+<p>to submit your package there are basically just 3 steps:</p>
+<ul>
+<li><p>the following should not give any errors:</p>
+<pre><code>check(&quot;PACKAGENAME&quot;)</code></pre></li>
+<li>you have to meet <a href="http://cran.r-project.org/web/packages/policies.html">CRAN policies</a></li>
+<li><p>submit tarball on <a href="https://cran.r-project.org/submit.html">webform</a></p></li>
+</ul>
+</section>
+<section id="github" class="level2">
+<h2>github</h2>
+<p>the easiest (cause fastest) way to make your package public is to just</p>
+<ul>
+<li>make a <span style="color:orange">git repo out of your package folder</span></li>
+<li>write a good <span style="color:orange">readme file</span>, so people will understand what your package does, how to install it and was requirements to meet</li>
+<li><span style="color:orange">commit and upload</span> to your github account</li>
+</ul>
+<p>now everyone from everywhere can <span style="color:orange">install your package</span> within R with two single lines:</p>
+<pre><code>library(devtools)
+install_github(&#39;githubNickname/repositoryName&#39;)</code></pre>
+<p>isn't that just awesome !?</p>
+</section>
+</section>
+<section id="hands-on-4" class="level1">
+<h1>hands-on (4)</h1>
+<ul>
+<li><span style="color:orange"> create a new git repository </span></li>
+<li><span style="color:orange"> add your files and commit </span></li>
+<li><span style="color:orange"> push changes to github </span></li>
+<li><span style="color:orange"> install your package directly via github </span></li>
+</ul>
+</section>
+<section id="getting-help-and-get-started" class="level1">
+<h1>getting help and get started</h1>
+<p>GENERAL:</p>
+<ul>
+<li>website &amp; book by Hadley Wickham: <a href="http://r-pkgs.had.co.nz/">R Package</a></li>
+<li><a href="https://cran.r-project.org/doc/manuals/R-exts.html">CRANs official guide</a></li>
+<li><a href="https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/">great quick guide</a></li>
+<li><a href="http://kbroman.org/pkg_primer/">also good</a></li>
+</ul>
+<p>LICENCE:</p>
+<ul>
+<li><a href="http://choosealicense.com/licenses/">choosealicense</a></li>
+<li><a href="https://tldrlegal.com/">tldrlegal</a></li>
+</ul>
+<p>CRAN:</p>
+<ul>
+<li><a href="http://cran.r-project.org/web/packages/policies.html">CRAN policies</a></li>
+<li><a href="https://cran.r-project.org/submit.html">CRAN submission webform</a></li>
+</ul>
+<p>VIGNETTE engine:</p>
+<ul>
+<li><a href="https://yihui.name/knitr/">knitr</a></li>
+</ul>
+</section>
+    </div>
+  </div>
+
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,         // Display controls in the bottom right corner
+        progress: true,         // Display a presentation progress bar
+        history: true,          // Push each slide change to the browser history
+        center: false,                       // Vertical centering of slides
+        maxScale: 1.5,                  // Bounds for smallest/largest possible content scale
+        slideNumber: false,                // Display the page number of the current slide
+        theme: 'moon', // available themes are in /css/theme
+        transition: 'slide', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+//          { src: 'reveal.js/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; }, }
+//          { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+]});
+    </script>
+    </body>
+</html>

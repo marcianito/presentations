@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title></title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css"/>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="reveal.js/css/theme/moon.css" id="theme">
+  <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+  <script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = 'reveal.js/css/print/pdf.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <style type="text/css">
+  		.reveal h1 { font-size: 1.5em; }
+  		.reveal h2 { font-size: 1em; }
+  
+   .reveal img{border-style: none;}
+  
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+
+<section id="write-emails-from-commandline-thus-from-everywhere" class="level1">
+<h1>write emails from commandline (thus from everywhere)</h1>
+<p><span style="color:orange">sSMTP</span></p>
+<p>brilliant for configuring certain triggers in your OS, where you want to be notified via mail</p>
+<ul>
+<li><span style="color:orange"> works great for data loggers and logging systems</span> as notifications (e.g. thresholds, etc.)</li>
+<li>it's as simple as:</li>
+</ul>
+<p>'echo &quot;this is mail body&quot; | mail -s &quot;Subject&quot; username@somedomain.com'</p>
+<p><a href="https://github.com/ajwans/sSMTP">linux</a> <a href="http://unixmail-w32.sourceforge.net/">windows</a> <a href="https://github.com/ajwans/sSMTP">ios</a></p>
+</section>
+<section id="phone-utils" class="level1">
+<h1>phone utils</h1>
+<section id="section" class="level2">
+<h2><img src="firefoxsync.png" /></h2>
+<p><span style="color:orange"> sync your data </span> from phone / tablet / laptop</p>
+<ul>
+<li>bookmarks</li>
+<li>history</li>
+<li>preferences</li>
+<li>passwords</li>
+<li>add-ons</li>
+<li>open tabs (!)</li>
+</ul>
+<p>download in firefox add-ons</p>
+</section>
+<section id="antennapod" class="level2">
+<h2>antennaPod</h2>
+<p>small, smoothly working app to store, download, mananage and <span style="color:orange">listen to podcasts</span></p>
+<figure>
+<img src="antennapod_action.jpeg" />
+</figure>
+<!--![](antennapod-logo.png)-->
+<p><a href="https://www.antennapod.org">website</a> <a href="https://github.com/AntennaPod/AntennaPod">github</a></p>
+</section>
+<section id="network-log" class="level2">
+<h2>network log</h2>
+<p><span style="color:orange"> watch and log </span> all network activity on your phone</p>
+<figure>
+<img src="networklog_action.png" />
+</figure>
+<!--![](networklog.png)-->
+<p><a href="https://f-droid.org/repository/browse/?fdid=com.googlecode.networklog">f-droid store</a> <a href="https://github.com/pragma-/networklog/">github</a></p>
+</section>
+</section>
+<section id="little-smartphone-security" class="level1">
+<h1>little smartphone security</h1>
+<section id="what-you-can-do" class="level2">
+<h2>what you can do</h2>
+<p>smartphones are daily used by almost everyone (in germany) BUT people have NO IDEA what their phone really does.. ..this is and will be critical as more and more activities are shifted to carry out with a smartphone (banking, paying, tickets, etc.)</p>
+<p>custom ROMs (operating systems from cell phone company):</p>
+<ul>
+<li>blocks the user out (not granting all rights completely control phone)</li>
+<li>are not updated for old phones, thus leaving doors for intruders wide open</li>
+</ul>
+<p><span style="color:orange"> there are working alternatives !! </span></p>
+<ul>
+<li>root your phone (gives access to other types of apps)</li>
+<li>install an alternative operating system</li>
+<li>actively control phone network activity</li>
+</ul>
+</section>
+<section id="alternatives" class="level2">
+<h2>alternatives</h2>
+<p>app store: <a href="https://f-droid.org">f-droid</a></p>
+<p>whatsapp: <a href="https://threema.ch/">threema</a>, <a href="https://chatsecure.org/">chatsecure</a>, <a href="https://whispersystems.org/">signal</a>, <a href="https://f-droid.org/repository/browse/?fdid=eu.siacs.conversations">conversations</a></p>
+<p>operating systems: <a href="http://www.cyanogenmod.org/">cyanogenmod</a>, <a href="https://sailfishos.org/">sailfish OS</a>, <a href="https://omnirom.org/">OmniRom</a>, <a href="http://en.miui.com/">MIUI</a></p>
+<p>network activity: <a href="https://f-droid.org/repository/browse/?fdid=dev.ukanth.ufirewall">AFWall+</a></p>
+</section>
+</section>
+    </div>
+  </div>
+
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,         // Display controls in the bottom right corner
+        progress: true,         // Display a presentation progress bar
+        history: true,          // Push each slide change to the browser history
+        center: false,                       // Vertical centering of slides
+        maxScale: 1.5,                  // Bounds for smallest/largest possible content scale
+        slideNumber: false,                // Display the page number of the current slide
+        theme: 'moon', // available themes are in /css/theme
+        transition: 'slide', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+//          { src: 'reveal.js/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; }, }
+//          { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+]});
+    </script>
+    </body>
+</html>

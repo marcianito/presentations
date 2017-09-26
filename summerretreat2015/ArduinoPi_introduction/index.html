@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title></title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css"/>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="reveal.js/css/theme/moon.css" id="theme">
+  <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+  <script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = 'reveal.js/css/print/pdf.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <style type="text/css">
+  		.reveal h1 { font-size: 1.5em; }
+  		.reveal h2 { font-size: 1em; }
+  
+   .reveal img{border-style: none;}
+  
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+
+<section id="arduino-raspberry-pi" class="level1">
+<h1>Arduino &amp; Raspberry Pi</h1>
+<p><img src="./pics/logos.png" style="border-style: none"/></p>
+<p>Marvin Reich</p>
+<p><strong>Summerretreat 2015</strong></p>
+</section>
+<section id="structure" class="level1">
+<h1>structure</h1>
+<ul>
+<li>history &amp; facts</li>
+<li>what to know first</li>
+<li>what do you need?</li>
+<li>what can you do with it?</li>
+<li>approaching a project idea</li>
+<li>..so what is possible?</li>
+<li>pi stuff</li>
+<li>your project ideas / brainstorming</li>
+<li>where to start..?</li>
+</ul>
+</section>
+<section id="history-facts" class="level1">
+<h1>history &amp; facts</h1>
+<section id="arduino" class="level2">
+<h2>arduino</h2>
+<ul>
+<li>started in 2005</li>
+<li>project for students at <em>Interaction Design Institute Ivrea</em> (Italy)</li>
+<li>the idea was to design a easy-to-use computer for a non-technical-audience</li>
+<li>sold over 50000 in just 2 years</li>
+<li>name comes from a bar where founders often met</li>
+</ul>
+</section>
+<section id="raspberry-pi" class="level2">
+<h2>raspberry pi</h2>
+<ul>
+<li>started in 2009</li>
+<li>initiative from charity foundation, later called &quot;raspberry pi foundation&quot;</li>
+<li>idea of giving children a cheap hardware tool for experimentating and educating the &quot;new generation&quot; in computer hardware</li>
+<li>model B sold over 2 million in just 2 years</li>
+</ul>
+</section>
+<section id="so-what-is-the-idea.." class="level2">
+<h2>so what is the idea..?</h2>
+<p>..to give the new generation and interested people cheap hardware in order to:</p>
+<ul>
+<li>get in touch with hardware again</li>
+<li>actually DO something with it</li>
+<li>have cheap equipment so fear ceases in experimentating</li>
+<li>build a flexible platform for infinite options</li>
+<li>push on creativism, thinking of future IT solutions and &quot;new ways of hardware&quot;</li>
+</ul>
+</section>
+<section id="tecnical-specifications" class="level2">
+<h2>tecnical specifications</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">raspberry pi 2</th>
+<th style="text-align: center;">arduino uno</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">chip</td>
+<td style="text-align: center;">ARM7 Q 900 Mhz</td>
+<td style="text-align: center;">ATmega 328P</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">USB ports</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">no</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">HDMI</td>
+<td style="text-align: center;">yes</td>
+<td style="text-align: center;">no</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">ethernet</td>
+<td style="text-align: center;">yes</td>
+<td style="text-align: center;">no</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">flash memory</td>
+<td style="text-align: center;">micro sd slot</td>
+<td style="text-align: center;">32 KB</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">RAM</td>
+<td style="text-align: center;">1GB</td>
+<td style="text-align: center;">2 KB</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">digital I/O pins</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">14</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">analog pins</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">6</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="what-to-know-first" class="level1">
+<h1>what to know first</h1>
+<section id="software" class="level2">
+<h2>software</h2>
+<p>a software (program) tells the computer what to do</p>
+<p>there are different languages to write software</p>
+<ul>
+<li>the computer understands machine code</li>
+<li>this is why compiling is necessary</li>
+</ul>
+<p>languages close to machine code:</p>
+<ul>
+<li>cobol, fortran, c</li>
+</ul>
+<p>languages using other languages to simplify coding for end-user:</p>
+<ul>
+<li>R, matlab, html, ... , maaany more</li>
+</ul>
+</section>
+<section id="electronics" class="level2">
+<h2>electronics</h2>
+<p>a computer understangs only <strong>0</strong> and <strong>1</strong></p>
+<ul>
+<li>1 bit is 0 or 1</li>
+<li>8 bit = 01000010 = 1 byte</li>
+<li>1 byte permits the values of 0 to 255</li>
+<li>1 byte is the space needed to store one character</li>
+<li>important for analog signals</li>
+</ul>
+</section>
+<section id="why-these-examples" class="level2">
+<h2>why these examples?</h2>
+<p>because:</p>
+<ul>
+<li>you might need to code close to hardware</li>
+<li>you might get involved in how &quot;raw&quot; data is passed on</li>
+</ul>
+<p>for sure is that</p>
+<ul>
+<li>you will get much more in touch with hardware</li>
+<li>some projects are so individual that you really have to &quot;build your own solutions&quot;</li>
+</ul>
+<p>starting with and revising basic knowledge is important and will definitely help</p>
+</section>
+</section>
+<section id="what-do-you-need" class="level1">
+<h1>what do you need?</h1>
+<section id="basic" class="level2">
+<h2>basic</h2>
+<ul>
+<li>microcontroller</li>
+<li>power supply</li>
+<li>storage medium</li>
+<li>computer for operating the microcontroller</li>
+<li>sensors / units to connect</li>
+<li>program (code) to do what you want</li>
+</ul>
+</section>
+<section id="advanced" class="level2">
+<h2>advanced</h2>
+<ul>
+<li>multimeter</li>
+<li>flush cutter</li>
+<li>wire stripper</li>
+<li>soldering iron</li>
+<li>breadboard</li>
+<li>maany cables</li>
+</ul>
+</section>
+<section id="software-arduino" class="level2">
+<h2>software: arduino</h2>
+<figure>
+<img src="./pics/arduinoIDE.png" />
+</figure>
+</section>
+<section id="software-raspberry-pi" class="level2">
+<h2>software: raspberry pi</h2>
+<ul>
+<li>operating system</li>
+<li>usual stuff for programming</li>
+</ul>
+<p>operating sytems:</p>
+<ul>
+<li>raspbian</li>
+<li>ubuntu mate</li>
+<li>snappy ubuntu core</li>
+<li>windows 10</li>
+<li>OSMC (media center)</li>
+<li>RISC OS</li>
+</ul>
+</section>
+<section id="hardware" class="level2">
+<h2>hardware</h2>
+<p>basically you can use all sensors and parts on both devices!!</p>
+<p>BUT..</p>
+</section>
+<section id="shields" class="level2">
+<h2>shields</h2>
+<p>to connect (external) hardware, both boards provide the possibility to use so called <em>shields</em></p>
+<ul>
+<li>pre-build circuit boards</li>
+<li>easily plugged-in onto the microcontroller</li>
+</ul>
+<p>they provide additional capacities like:</p>
+<ul>
+<li>controlling motors</li>
+<li>provide communication (internet, cellular, wireless)</li>
+<li>connect LCD-screens</li>
+<li>connect cameras</li>
+<li>connect sensors</li>
+<li>..much more!</li>
+</ul>
+</section>
+</section>
+<section id="what-can-you-do-with-it" class="level1">
+<h1>what can you do with it?</h1>
+<section id="arduino-vs.-pi" class="level2">
+<h2>arduino vs. pi</h2>
+<p>there are things you can do with both boards BUT each one have their speciality</p>
+<p>then there are things you cannot realize with both</p>
+<p>the bigger the project, the more probable that you will need to combine both boards</p>
+<p>..<strong>y is that?</strong></p>
+<figure>
+<img src="./pics/controllers.png" />
+</figure>
+</section>
+<section id="arduino-1" class="level2">
+<h2>arduino</h2>
+<ul>
+<li>pure microcontroller</li>
+<li>low power requirement</li>
+<li>small in size (exists even in tiny)</li>
+<li>no (not much) internal storage</li>
+<li>perfect to connect sensors, both digital and analog</li>
+</ul>
+</section>
+<section id="typical-tasks-arduino" class="level2">
+<h2>typical tasks: arduino</h2>
+<ul>
+<li>robotik</li>
+<li>sensor technologies</li>
+<li>client / server for data transfers (UMTS, radio transmitters)</li>
+</ul>
+</section>
+<section id="raspberry-pi-1" class="level2">
+<h2>raspberry pi</h2>
+<ul>
+<li>more a computer than a typical microcontroller</li>
+<li>possibility to connect sensors</li>
+<li>can accomplish all tasks of a &quot;normal&quot; computer</li>
+<li>very flexible storage</li>
+<li>fast and more powerful processor</li>
+</ul>
+</section>
+<section id="typical-tasks-pi" class="level2">
+<h2>typical tasks: pi</h2>
+<ul>
+<li>webserver</li>
+<li>cloud</li>
+<li>database</li>
+<li>media center</li>
+<li>file sharing</li>
+<li>sensor technologies</li>
+</ul>
+</section>
+</section>
+<section id="approaching-a-project-idea" class="level1">
+<h1>approaching a project idea</h1>
+<section id="structure-1" class="level2">
+<h2>structure</h2>
+<ol type="1">
+<li>figure out what you want to do</li>
+<li>check what hardware best fits your needs</li>
+<li>look on the web for similar projects</li>
+<li>buy the hardware and connect it</li>
+<li>decide on the language(s) to use (pi)</li>
+<li>install drivers and libraries</li>
+<li>make first tests</li>
+<li>start with a minimized setup and get more complex</li>
+</ol>
+<p>when it all works well:</p>
+<ol start="9" type="1">
+<li>build an individualized circuit board</li>
+<li>build apropiated casing</li>
+</ol>
+</section>
+<section id="what-you-should-have-in-mind" class="level2">
+<h2>what you should have in mind</h2>
+<ul>
+<li>power supply</li>
+<li>storage needed: internal, external, database, data transmission</li>
+<li>libraries: there is always more than just one</li>
+<li>can i do everything with just one microcontroller?</li>
+<li>if you buy cheap hardware, buy more at once!</li>
+<li>degrees of freedom (individuality) vs. guaranteed project success</li>
+</ul>
+</section>
+</section>
+<section id="so-what-is-possible" class="level1">
+<h1>..so what is possible?</h1>
+<section id="arduino-pi" class="level2">
+<h2>arduino &amp; pi</h2>
+<p><img src="./pics/arduinouno.png" /><img src="./pics/pi2.png" /></p>
+</section>
+<section id="arduino-kit" class="level2">
+<h2>arduino kit</h2>
+<figure>
+<img src="./pics/arduinokit.jpg" />
+</figure>
+</section>
+<section id="pi-kit" class="level2">
+<h2>pi kit</h2>
+<figure>
+<img src="./pics/pikit.jpg" />
+</figure>
+</section>
+<section id="shields-1" class="level2">
+<h2>shields</h2>
+<figure>
+<img src="./pics/shields.jpg" />
+</figure>
+</section>
+<section id="microbot" class="level2">
+<h2>microbot</h2>
+<figure>
+<img src="./pics/microbot.jpg" />
+</figure>
+</section>
+<section id="smiling-plant" class="level2">
+<h2>smiling plant</h2>
+<figure>
+<img src="./pics/plantsmile.jpg" />
+</figure>
+</section>
+<section id="lawnmower" class="level2">
+<h2>lawnmower</h2>
+<figure>
+<img src="./pics/lawnmower.jpg" />
+</figure>
+</section>
+<section id="drone" class="level2">
+<h2>drone</h2>
+<figure>
+<img src="./pics/drone.jpg" />
+</figure>
+</section>
+<section id="piphone" class="level2">
+<h2>piphone</h2>
+<figure>
+<img src="./pics/piphone.png" />
+</figure>
+</section>
+<section id="painter-pi" class="level2">
+<h2>painter pi</h2>
+<figure>
+<img src="./pics/painter.jpg" />
+</figure>
+</section>
+<section id="photo-focus-stacking-i" class="level2">
+<h2>photo focus stacking I</h2>
+<p><img src="./pics/focusstacking2.jpg" /><img src="./pics/stackedcow.jpg" /></p>
+</section>
+<section id="photo-focus-stacking-ii" class="level2">
+<h2>photo focus stacking II</h2>
+<figure>
+<img src="./pics/stackedcow.jpg" />
+</figure>
+</section>
+</section>
+<section id="pi-stuff" class="level1">
+<h1>pi stuff</h1>
+<section id="setup" class="level2">
+<h2>setup</h2>
+<ul>
+<li>headless vs. complete</li>
+<li>active vs. passive</li>
+<li>hidden vs. interactive</li>
+<li>internal network vs. internet</li>
+</ul>
+</section>
+<section id="webserver" class="level2">
+<h2>webserver</h2>
+<ul>
+<li>apache: complete, big, lots of help</li>
+<li>nginx: small, basic, stable</li>
+<li>lighttpd: even smaller, stable, widely used</li>
+</ul>
+</section>
+<section id="data-storage" class="level2">
+<h2>data storage</h2>
+<ul>
+<li>&quot;internal&quot; (sd card slot)</li>
+<li>external usb</li>
+</ul>
+<p>regular folder structures vs. database</p>
+<ul>
+<li>posgres: complete, big, slow</li>
+<li>sqlite: quite standard, easy, lots of help</li>
+<li>node (mongo db)</li>
+</ul>
+</section>
+<section id="cloud" class="level2">
+<h2>cloud</h2>
+<ul>
+<li>owncloud</li>
+<li>seafile</li>
+<li>syncthing</li>
+<li>bittorrent sync</li>
+</ul>
+</section>
+<section id="music" class="level2">
+<h2>music</h2>
+<ul>
+<li>music player deamon (mpd)</li>
+<li>airplay</li>
+<li>pi musicbox</li>
+</ul>
+</section>
+</section>
+<section id="your-project-ideas-brainstorming" class="level1">
+<h1>your project ideas / brainstorming</h1>
+<section id="requests" class="level2">
+<h2>requests</h2>
+<ul>
+<li>tipping buckets / rain gauges</li>
+<li>meteo sensors</li>
+<li>webserver</li>
+<li>webbrowser</li>
+<li>radio communication</li>
+<li>...</li>
+</ul>
+<p>now: <strong>BRAINSTORMING</strong></p>
+</section>
+<section id="meteo-rain" class="level2">
+<h2>meteo: rain</h2>
+<p><a href="https://www.openhacks.com/uploadsproductos/rain_sensor_module.pdf"><img src="./pics/rainsensor.jpg" /></a></p>
+<p><a href="http://rainsensors.com/">semi professional electrical rain sensor</a></p>
+<p><a href="http://www.instructables.com/id/Arduino-Weather-Station-Part3-Rain/?ALLSTEPS">self build rain gauge: arduino</a></p>
+</section>
+<section id="radio-communication" class="level2">
+<h2>radio communication</h2>
+<p><img src="./pics/rfm12b.jpg" /> <img src="./pics/xbee.jpg" /></p>
+<p>cheap, basic --- expensive, intelligent</p>
+</section>
+</section>
+<section id="where-to-start.." class="level1">
+<h1>where to start..?</h1>
+<section id="hardware-1" class="level2">
+<h2>hardware</h2>
+<ul>
+<li><a href="https://www.pollin.de">pollin</a></li>
+<li><a href="https://www.reichelt.de">reichelt</a></li>
+<li><a href="https://www.watterott.com">watterott</a></li>
+<li><a href="https://www.adafruit.com">adafruit</a></li>
+<li><a href="https://www.seeedstudio.com">seeed</a></li>
+<li><a href="http://fritzing.org/home/">fritzing: circuit board design</a></li>
+</ul>
+</section>
+<section id="software-1" class="level2">
+<h2>software</h2>
+<ul>
+<li><a href="https://www.arduino.cc/en/Main/Software">arduino ide</a></li>
+<li><a href="https://www.raspberrypi.org/downloads/">pi operating system images</a></li>
+<li>driver for many hardware on (arduino &amp; pi) <a href="https://www.github.com">github</a></li>
+</ul>
+</section>
+<section id="tutorials-arduino" class="level2">
+<h2>tutorials arduino</h2>
+<ul>
+<li><a href="http://tronixstuff.com/tutorials/">tronixstuff</a></li>
+<li><a href="https://learn.sparkfun.com/tutorials/what-is-an-arduino">sparkfun</a></li>
+<li><a href="https://learn.adafruit.com/category/learn-arduino">adafruit</a></li>
+<li><a href="http://www.instructables.com">instructables</a></li>
+</ul>
+</section>
+<section id="tutorials-raspberry-pi" class="level2">
+<h2>tutorials raspberry pi</h2>
+<ul>
+<li><a href="http://jankarres.de/uebersicht-aller-raspberry-pi-artikel/">jan karres</a></li>
+<li><a href="https://developer-blog.net">development-blog</a></li>
+<li><a href="http://www.instructables.com">instructables</a></li>
+</ul>
+</section>
+</section>
+    </div>
+  </div>
+
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,         // Display controls in the bottom right corner
+        progress: true,         // Display a presentation progress bar
+        history: true,          // Push each slide change to the browser history
+        center: false,                       // Vertical centering of slides
+        maxScale: 1.5,                  // Bounds for smallest/largest possible content scale
+        slideNumber: false,                // Display the page number of the current slide
+        theme: 'moon', // available themes are in /css/theme
+        transition: 'slide', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+//          { src: 'reveal.js/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; }, }
+//          { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+]});
+    </script>
+    </body>
+</html>

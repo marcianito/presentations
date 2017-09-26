@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title></title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css"/>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="reveal.js/css/theme/moon.css" id="theme">
+  <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+  <script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = 'reveal.js/css/print/pdf.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <style type="text/css">
+  		.reveal h1 { font-size: 1.5em; }
+  		.reveal h2 { font-size: 1em; }
+  
+   .reveal img{border-style: none;}
+  
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+
+<section id="pandoc" class="level1">
+<h1>pandoc</h1>
+<p><span style="color:orange">universal document converter</span> converts from easy-to-write markdown, latex, html, docx (and more) to various file formats, like</p>
+<ul>
+<li>tex</li>
+<li>latex beamer</li>
+<li>docx, odt</li>
+<li>html</li>
+<li>pdf</li>
+<li>ebooks</li>
+<li>and many more!</li>
+</ul>
+<p><a href="https://www.pandoc.org">pandoc website</a></p>
+<p>(for windows, mac &amp; linux)</p>
+</section>
+<section id="little-internet-security" class="level1">
+<h1>little internet security</h1>
+<section id="section" class="level2">
+<h2><img src="httpslogo.png" /></h2>
+<p>extention for brower (pc &amp; smartphone)</p>
+<p><span style="color:orange">automatic forward to secure websites</span>, if they exist</p>
+<p>download using add-ons of your browser or <a href="https://www.eff.org/de/https-everywhere">here</a></p>
+</section>
+<section id="section-1" class="level2">
+<h2><img src="noscript.png" /></h2>
+<p>firefox-extention which <span style="color:orange">blocks active content</span> like</p>
+<ul>
+<li>javascript</li>
+<li>java-applets</li>
+<li>flash</li>
+<li>microsoft silverlight</li>
+</ul>
+<p>blocking policies adjustable by user</p>
+<p>useful especiall as well for <span style="color:orange">getting an idea of who want to retrieve information</span> when visiting whatever website</p>
+<p>(what is the interest of facebook in my orders at conrad!?!)</p>
+<p><a href="https://noscript.net/">project website</a></p>
+</section>
+<section id="section-2" class="level2">
+<h2><img src="tor.png" /></h2>
+<p>routes ALL (if desired) <span style="color:orange">connections over tor-nodes</span></p>
+<p>a request is redirected over sufficient, privately provided nodes in order to make it (almost) impossible to be identified</p>
+<p>as a consequence you can really <span style="color:orange">ensure anonymity</span> while surfing the web</p>
+<p>useful for:</p>
+<ul>
+<li>people living under restrictive governments</li>
+<li>people who want to protect their privacy</li>
+<li>journalist, bloggers</li>
+</ul>
+<p>versions</p>
+<ul>
+<li>standalone browser for pc (tor-browser)</li>
+<li>all-connection solution for smartphones (orbot)</li>
+</ul>
+<p><a href="https://www.torproject.org/">project website</a></p>
+</section>
+<section id="tor-video" class="level2">
+<h2>Tor video</h2>
+<p><a href="http://www.youtube.com/watch?v=JWII85UlzKw"><img src="http://img.youtube.com/vi/JWII85UlzKw/0.jpg" alt="what is tor?" /></a></p>
+</section>
+</section>
+<section id="personal-cloud-syncthing" class="level1">
+<h1>personal cloud: syncthing</h1>
+<figure>
+<img src="./sycnthing.jpg" />
+</figure>
+<p><a href="https://syncthing.net/">syncthing website</a></p>
+<p><a href="https://github.com/syncthing/syncthing">syncthing git repository</a></p>
+</section>
+    </div>
+  </div>
+
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,         // Display controls in the bottom right corner
+        progress: true,         // Display a presentation progress bar
+        history: true,          // Push each slide change to the browser history
+        center: false,                       // Vertical centering of slides
+        maxScale: 1.5,                  // Bounds for smallest/largest possible content scale
+        slideNumber: false,                // Display the page number of the current slide
+        theme: 'moon', // available themes are in /css/theme
+        transition: 'slide', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+//          { src: 'reveal.js/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; }, }
+//          { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+]});
+    </script>
+    </body>
+</html>

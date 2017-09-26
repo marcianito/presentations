@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title></title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css"/>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="reveal.js/css/theme/moon.css" id="theme">
+  <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+  <script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = 'reveal.js/css/print/pdf.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <style type="text/css">
+  		.reveal h1 { font-size: 1.5em; }
+  		.reveal h2 { font-size: 1em; }
+  
+   .reveal img{border-style: none;}
+  
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+
+<section id="arduino-hardware-workshop" class="level1">
+<h1>Arduino Hardware Workshop</h1>
+<p><img src="./pics/arduinologo.png" style="border-style: none"/></p>
+<p>Marvin Reich, Daniel Beiter, Knut Günter</p>
+<p><strong>Summerretreat 2016</strong></p>
+</section>
+<section id="structure" class="level1">
+<h1>structure</h1>
+<ul>
+<li>quick arduino introduction</li>
+<li>this workshop</li>
+<li>necessary knowledge on the go</li>
+<li>where to start your own project ?</li>
+</ul>
+</section>
+<section id="quick-arduino-introduction" class="level1">
+<h1>quick arduino introduction</h1>
+<section id="arduino" class="level2">
+<h2>arduino</h2>
+<ul>
+<li>pure microcontroller</li>
+<li>low power requirement</li>
+<li>small in size (exists even in tiny)</li>
+<li>no (not much) internal storage</li>
+<li>perfect to connect sensors, both digital and analog</li>
+</ul>
+</section>
+<section id="typical-arduino-tasks" class="level2">
+<h2>typical arduino tasks</h2>
+<ul>
+<li>robotik</li>
+<li>sensor technologies</li>
+<li>client / server for data transfers (UMTS, radio transmitters)</li>
+</ul>
+</section>
+<section id="arduino-family" class="level2">
+<h2>arduino family</h2>
+<figure>
+<img src="./pics/arduino_family.jpeg" />
+</figure>
+</section>
+</section>
+<section id="this-workshop" class="level1">
+<h1>this workshop</h1>
+<section id="what-do-we-need" class="level2">
+<h2>what do we need?</h2>
+<ul>
+<li>microcontroller</li>
+<li>power supply</li>
+<li>storage medium</li>
+<li>computer for operating the microcontroller</li>
+<li>sensors / units to connect</li>
+<li>program (code) to do what you want</li>
+</ul>
+</section>
+<section id="what-we-will-do" class="level2">
+<h2>what we will do</h2>
+<ol type="1">
+<li>connect arduino to power supply</li>
+<li>write a first basic &quot;hello world&quot; script</li>
+<li>connect sensors to arduino (via breadboard)</li>
+<li>read and configure data output from sensor readings</li>
+<li>write an &quot;advanced&quot; script which reads and logs data</li>
+<li>store data on a sd card</li>
+</ol>
+</section>
+</section>
+<section id="necessary-knowledge-on-the-go" class="level1">
+<h1>necessary knowledge on the go</h1>
+<section id="arduino-nano-scetch" class="level2">
+<h2>arduino nano scetch:</h2>
+<figure>
+<img src="./pics/nano_scetch.png" />
+</figure>
+</section>
+<section id="arduino-nano-datasheet" class="level2">
+<h2>arduino nano datasheet:</h2>
+<p><a href="./ArduinoNanoManual23.pdf">datasheet</a></p>
+</section>
+<section id="controller-configs-arduino-ide" class="level2">
+<h2>controller configs arduino IDE</h2>
+<p>enable:</p>
+<ul>
+<li>Tools <span class="math inline">→</span> Board <span class="math inline">→</span> choose your arduino type</li>
+<li>Tools <span class="math inline">→</span> SerielPort <span class="math inline">→</span> should work out of box, if not set manually</li>
+</ul>
+<p>establish:</p>
+<ul>
+<li>write program (sketch)</li>
+<li>compile program</li>
+<li>send program to arduino</li>
+</ul>
+<p>control:</p>
+<ul>
+<li>open seriel monitor to see printed output of arduino</li>
+<li>watch out for the baud-rate set</li>
+</ul>
+</section>
+<section id="hello-world-led-blinking" class="level2">
+<h2>hello world &amp; LED-blinking</h2>
+<ul>
+<li>arduino gui comes with looots of examples (<span class="math inline">→</span> use them!)</li>
+<li>commands, functions and structures often needed can be found here: <a href="https://www.arduino.cc/en/Reference/HomePage">arduino reference page</a></li>
+</ul>
+</section>
+<section id="structure-of-microcontroller" class="level2">
+<h2>structure of microcontroller</h2>
+<figure>
+<img src="./pics/Microcontroller_edit.png" />
+</figure>
+</section>
+<section id="sensor-types" class="level2">
+<h2>sensor types</h2>
+<p>two types of (main) sensor groups:</p>
+<ul>
+<li>analog</li>
+<li>digital</li>
+</ul>
+<p>connecting sensors: it useful and often unavoidable to read manuals and structograms</p>
+</section>
+<section id="sensors-analog" class="level2">
+<h2>sensors: analog</h2>
+<figure>
+<img src="./pics/Analog_Digital_Converter_edit.png" />
+</figure>
+</section>
+<section id="sensors-digital" class="level2">
+<h2>sensors: digital</h2>
+<figure>
+<img src="./pics/Seriel_Interface_edit.png" />
+</figure>
+</section>
+<section id="scripting" class="level2">
+<h2>scripting</h2>
+<ol type="1">
+<li>define what you want to do, make a concept (even if small and simple)</li>
+</ol>
+<p>in program code:</p>
+<ol start="2" type="1">
+<li>load necessary libraries</li>
+<li>define one time &quot;actions&quot; in void setup(){}</li>
+<li>read in sensor values and store in variables</li>
+<li>calibrate / adjust read values</li>
+<li>print some informative message on screen (or in between steps)</li>
+<li>store data (sd-card !?)</li>
+<li>think of a time-concept how often script should run</li>
+</ol>
+</section>
+<section id="scripting-example" class="level2">
+<h2>scripting example</h2>
+<pre><code>// load libraries
+#include &quot;hx711.h&quot;
+
+// sensors are analog and connected to A1 and A0
+// setup config for scale reading, as stated in library
+Hx711 scale(A1, A0);
+
+// define varianles
+int offset, testweight, testweigth_reading;
+float ratio;
+
+// &quot;one time actions&quot;
+void setup() {
+Serial.begin(9600);
+offset = 8388608;
+//testweight in [g]
+testweight = 200;
+testweigth_reading = 8511488;
+ratio = (testweigth_reading - offset) / testweight;
+
+// setup calibration for scale readings
+scale.setOffset(offset);
+scale.setScale(ratio);
+}
+
+// loop run over and over again 
+void loop() {
+Serial.println(scale.getGram());
+
+// &quot;waiting time&quot; in milli seconds
+delay(2000);
+}</code></pre>
+</section>
+<section id="sd-cards-as-storage-medium" class="level2">
+<h2>sd cards as storage medium</h2>
+<p>internal arduino storage is not meant to store real data so there are 2 options:</p>
+<ol type="1">
+<li>transfer data via any wireless technology</li>
+<li>connect a sd-card and store data on it</li>
+</ol>
+<p>for sd-cards you need:</p>
+<ul>
+<li>get a sd-card shield</li>
+<li>download library for shield</li>
+<li>include part in code about storing data on card</li>
+</ul>
+</section>
+</section>
+<section id="where-to-start-your-own-project" class="level1">
+<h1>where to start your own project ?</h1>
+<section id="structure-1" class="level2">
+<h2>structure</h2>
+<ol type="1">
+<li>figure out what you want to do</li>
+<li>check what hardware best fits your needs</li>
+<li>look on the web for similar projects</li>
+<li>buy the hardware and connect it</li>
+<li>install drivers and libraries</li>
+<li>make first tests</li>
+<li>start with a minimized setup and get more complex</li>
+</ol>
+<p>when it all works well:</p>
+<ol start="8" type="1">
+<li>build an individualized circuit board</li>
+<li>build apropiated casing</li>
+</ol>
+</section>
+<section id="what-you-should-have-in-mind" class="level2">
+<h2>what you should have in mind</h2>
+<ul>
+<li>power supply</li>
+<li>storage needed: internal, external, database, data transmission</li>
+<li>libraries: there is always more than just one</li>
+<li>can i do everything with just one microcontroller?</li>
+<li>if you buy cheap hardware, buy more at once!</li>
+<li>degrees of freedom (individuality) vs. guaranteed project success</li>
+</ul>
+</section>
+<section id="hardware" class="level2">
+<h2>hardware</h2>
+<ul>
+<li><a href="https://www.pollin.de">pollin</a></li>
+<li><a href="https://www.reichelt.de">reichelt</a></li>
+<li><a href="https://www.watterott.com">watterott</a></li>
+<li><a href="https://www.adafruit.com">adafruit</a></li>
+<li><a href="https://www.seeedstudio.com">seeed</a></li>
+<li><a href="http://fritzing.org/home/">fritzing: circuit board design</a></li>
+</ul>
+</section>
+<section id="software" class="level2">
+<h2>software</h2>
+<ul>
+<li><a href="https://www.arduino.cc/en/Main/Software">arduino ide</a></li>
+<li>driver for many hardware on (arduino &amp; pi) <a href="https://www.github.com">github</a></li>
+</ul>
+</section>
+<section id="tutorials-arduino" class="level2">
+<h2>tutorials arduino</h2>
+<ul>
+<li><a href="http://tronixstuff.com/tutorials/">tronixstuff</a></li>
+<li><a href="https://learn.sparkfun.com/tutorials/what-is-an-arduino">sparkfun</a></li>
+<li><a href="https://learn.adafruit.com/category/learn-arduino">adafruit</a></li>
+<li><a href="http://www.instructables.com">instructables</a></li>
+</ul>
+</section>
+</section>
+    </div>
+  </div>
+
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,         // Display controls in the bottom right corner
+        progress: true,         // Display a presentation progress bar
+        history: true,          // Push each slide change to the browser history
+        center: false,                       // Vertical centering of slides
+        maxScale: 1.5,                  // Bounds for smallest/largest possible content scale
+        slideNumber: false,                // Display the page number of the current slide
+        theme: 'moon', // available themes are in /css/theme
+        transition: 'slide', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+//          { src: 'reveal.js/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; }, }
+//          { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+]});
+    </script>
+    </body>
+</html>

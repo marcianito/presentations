@@ -1,0 +1,10 @@
+#########################################################
+### steps needed to get to your gitlab gfz git repository
+
+login on git.gfz-potsdam.de
+create new repository
+choose "private"
+add manually group members (watch out for project access, probably should be all master)
+
+
+import into existing local folder OR create new local folder

@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title></title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css"/>
+    <style type="text/css">code{white-space: pre;}</style>
+    <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #303030; color: #cccccc; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; }
+td.sourceCode { padding-left: 5px; }
+pre, code { color: #cccccc; background-color: #303030; }
+code > span.kw { color: #f0dfaf; } /* Keyword */
+code > span.dt { color: #dfdfbf; } /* DataType */
+code > span.dv { color: #dcdccc; } /* DecVal */
+code > span.bn { color: #dca3a3; } /* BaseN */
+code > span.fl { color: #c0bed1; } /* Float */
+code > span.ch { color: #dca3a3; } /* Char */
+code > span.st { color: #cc9393; } /* String */
+code > span.co { color: #7f9f7f; } /* Comment */
+code > span.ot { color: #efef8f; } /* Other */
+code > span.al { color: #ffcfaf; } /* Alert */
+code > span.fu { color: #efef8f; } /* Function */
+code > span.er { color: #c3bf9f; } /* Error */
+code > span.wa { color: #7f9f7f; font-weight: bold; } /* Warning */
+code > span.cn { color: #dca3a3; font-weight: bold; } /* Constant */
+code > span.sc { color: #dca3a3; } /* SpecialChar */
+code > span.vs { color: #cc9393; } /* VerbatimString */
+code > span.ss { color: #cc9393; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { } /* Variable */
+code > span.cf { color: #f0dfaf; } /* ControlFlow */
+code > span.op { color: #f0efd0; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #ffcfaf; font-weight: bold; } /* Preprocessor */
+code > span.at { } /* Attribute */
+code > span.do { color: #7f9f7f; } /* Documentation */
+code > span.an { color: #7f9f7f; font-weight: bold; } /* Annotation */
+code > span.cv { color: #7f9f7f; font-weight: bold; } /* CommentVar */
+code > span.in { color: #7f9f7f; font-weight: bold; } /* Information */
+    </style>
+    <link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+      if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+      }
+    </script>
+    <!--[if lt IE 9]>
+    <script src="reveal.js/lib/js/html5shiv.js"></script>
+    <![endif]-->
+    <style type="text/css">
+    		.reveal h1 { font-size: 1.5em; }
+    		.reveal h2 { font-size: 1em; }
+    		body { font-size: 1em;
+    			background-color: #E5E4E2; }
+    		.reveal blockquote { font-size: 1em; }
+    
+     		.reveal .slides img{border-style: none;}
+    
+     /*.slides img{border:0; opacity:0;}*/
+    
+    </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+
+<section id="git-introduction-and-local-usage-part-i" class="level1">
+<h1>git: introduction and local usage (part I)</h1>
+<section id="section" class="level2">
+<h2></h2>
+<p><img src="./pics/logo.png" style="border-style: none"/></p>
+<p><strong>january 2016</strong></p>
+</section>
+<section id="recap-section-it-guidelines" class="level2">
+<h2>recap section IT-guidelines</h2>
+<p>IT rules with the aim of:</p>
+<ul>
+<li>improve project documentation</li>
+<li>reproducibility of written code</li>
+<li>facilitate work in a group</li>
+<li>improve long term project efficiency</li>
+</ul>
+</section>
+</section>
+<section id="structure" class="level1">
+<h1>structure</h1>
+<ul>
+<li>why version control?</li>
+<li>A bit of git under the hood</li>
+<li>installing git</li>
+<li>starting with git</li>
+<li>simple example</li>
+<li>where to git what</li>
+<li>links and references</li>
+<li>outlook</li>
+</ul>
+</section>
+<section id="why-version-control" class="level1">
+<h1>why version control?</h1>
+<section id="section-1" class="level2">
+<h2></h2>
+<p>a long-lasting project has:</p>
+<ul>
+<li>different people working on it</li>
+<li>many project stages and program versions</li>
+<li>a lot of changes on the way of getting there</li>
+</ul>
+<p><strong>a version control system traces all these steps (changes, versions, people) in your project history</strong></p>
+</section>
+<section id="version-control" class="level2">
+<h2>version control</h2>
+<ul>
+<li>no longer hundreds of file versions with non-informative names</li>
+<li>documentation of projects for passing projects between persons / transferring it</li>
+<li>common tool for transparent and sustainable work flow (development)</li>
+<li>increase efficiency for group work</li>
+</ul>
+</section>
+<section id="why-git" class="level2">
+<h2>why git</h2>
+<ul>
+<li>it's free (open)</li>
+<li>distributed system</li>
+<li>non-linear development</li>
+<li>saves project history</li>
+<li>very popular, also because of GitHub</li>
+<li>cross platform</li>
+<li>especially intended for group work</li>
+</ul>
+</section>
+<section id="evolution-of-version-control-systems" class="level2">
+<h2>evolution of version control systems</h2>
+<figure>
+<img src="./pics/googletrend_git_legend.png" />
+</figure>
+</section>
+</section>
+<section id="a-bit-of-git-under-the-hood" class="level1">
+<h1>a bit of git under the hood</h1>
+<section id="what-git-can-do" class="level2">
+<h2>what git can do</h2>
+<ul>
+<li>trace your work steps in a project</li>
+<li>regeneration of past work</li>
+<li>particularly useful in coding (pure ASCII or text files)</li>
+<li>merging work done independently</li>
+</ul>
+</section>
+<section id="what-git-cannot-do" class="level2">
+<h2>what git cannot do</h2>
+<ul>
+<li>you still have to document the code</li>
+<li>magically solve everything</li>
+<li>no backup system</li>
+</ul>
+</section>
+<section id="section-2" class="level2">
+<h2></h2>
+<figure>
+<img src="./pics/comparison.png" />
+</figure>
+</section>
+<section id="section-3" class="level2">
+<h2></h2>
+<figure>
+<img src="./pics/git_folder_view.png" />
+</figure>
+</section>
+</section>
+<section id="take-home-lessons" class="level1">
+<h1>take-home lessons</h1>
+<ul>
+<li>git tracks work steps</li>
+<li>git comments changes</li>
+<li>git has to be used correctly!</li>
+</ul>
+</section>
+<section id="installing-git" class="level1">
+<h1>installing git</h1>
+<section id="section-4" class="level2">
+<h2></h2>
+<p>Windows</p>
+<ul>
+<li>git comes with one of the git GUIs</li>
+<li><a href="https://www.sourcetreeapp.com/">sourcetree</a> for a powerful GUI
+<ul>
+<li>change language to English after installation</li>
+<li>edit your personal information (both within sourcetree)</li>
+</ul></li>
+</ul>
+</section>
+<section id="section-5" class="level2">
+<h2></h2>
+<p>linux</p>
+<ul>
+<li>deb-based:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> apt-get install git-all</code></pre></div>
+<ul>
+<li>rpm-based:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> yum install git-all</code></pre></div>
+</section>
+<section id="section-6" class="level2">
+<h2></h2>
+<figure>
+<img src="./pics/git_GUI_overview_part01mod.png" />
+</figure>
+</section>
+<section id="section-7" class="level2">
+<h2></h2>
+<figure>
+<img src="./pics/git_GUI_overview_part02mod.png" />
+</figure>
+</section>
+</section>
+<section id="starting-with-git" class="level1">
+<h1>starting with git</h1>
+<section id="basic-commands" class="level2">
+<h2>basic commands</h2>
+<ul>
+<li>overview of basic command needed in everyday usage</li>
+<li>good wrap-up on the cheat-sheet</li>
+<li>GUIs call those original commands for you</li>
+<li>you can also use them directly on the command line</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">git</span> add example.R</code></pre></div>
+</section>
+<section id="learning-to-talk-git" class="level2">
+<h2>learning to talk git</h2>
+<ul>
+<li>initiate a git repository <strong>[init]</strong></li>
+<li>watching files (within this repo) <strong>[add]</strong></li>
+<li>making a snapshot (commenting changes) <strong>[commit]</strong></li>
+<li>undo changes (reverse add-command) <strong>[reset]</strong></li>
+<li>parallel developing <strong>[branch]</strong></li>
+<li>moving around in time <strong>[checkout]</strong></li>
+<li>joining finished work steps (different branches) <strong>[merge]</strong></li>
+</ul>
+</section>
+</section>
+<section id="example" class="level1">
+<h1>example</h1>
+<section id="setup" class="level2">
+<h2>setup</h2>
+<p>We reproduce the given example that has 4 individual commits. User your favorite <strong>text editor</strong> and <strong>sourcetree</strong> for all exercises.</p>
+</section>
+<section id="first-commit" class="level2">
+<h2>first commit</h2>
+<p>Within a folder under git version control, create a file &quot;print.txt&quot; with the content</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span> <span class="st">&quot;hello&quot;</span></code></pre></div>
+<p>and commit the changes to the local repository.</p>
+</section>
+<section id="second-commit" class="level2">
+<h2>second commit</h2>
+<p>Edit the file &quot;print.txt&quot;, change the statement to</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span> <span class="st">&quot;hello world&quot;</span></code></pre></div>
+<p>and commit the changes to the repository.</p>
+</section>
+<section id="third-commit" class="level2">
+<h2>third commit</h2>
+<p>Inside the same folder, create a second file named &quot;bruno.txt&quot; with the content</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span> <span class="st">&quot;hello bruno&quot;</span></code></pre></div>
+<p>and commit the changes to the repository.</p>
+</section>
+<section id="fourth-commit" class="level2">
+<h2>fourth commit</h2>
+<p>Put the content of file &quot;bruno.txt&quot; into the file &quot;print.txt&quot;.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span> <span class="st">&quot;hello world&quot;</span>
+<span class="bu">print</span> <span class="st">&quot;hello bruno&quot;</span></code></pre></div>
+<p>Delete the empty file &quot;bruno.txt&quot; and commit the changes to the repository.</p>
+</section>
+</section>
+<section id="where-to-git-what" class="level1">
+<h1>where to git what</h1>
+<ul>
+<li>example 1 (manual version control, running numbers, dates)</li>
+<li><p>example 2 (version control by topic (paper, agu, egu, phd day ...)</p>
+<ol type="1">
+<li><strong>identify</strong> your master</li>
+<li><strong>copy</strong> it to a new folder (i.e. 'code')</li>
+<li><strong>use</strong> this new folder as git-repository</li>
+</ol></li>
+<li><p>ask for advice / recommendations for first steps</p></li>
+</ul>
+</section>
+<section id="commits-and-commit-messages" class="level1">
+<h1>commits and commit messages</h1>
+<section id="when-to-commit" class="level2">
+<h2>when to commit</h2>
+<ul>
+<li>What is it worth committing?</li>
+<li>How often do we commit?
+<ul>
+<li>The #1 rule in git-land is: COMMIT EARLY, COMMIT OFTEN.</li>
+</ul></li>
+<li>...</li>
+</ul>
+</section>
+<section id="commit-messages-style" class="level2">
+<h2>commit messages (<a href="http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html">style</a>)</h2>
+<ol type="1">
+<li>Subject (very first line)
+<ul>
+<li>Capitalized, short (50 chars or less) summary followed by a blank line</li>
+</ul></li>
+<li>Body (wrapped in 72 characters or less)
+<ul>
+<li>Detailed description (see next slide)</li>
+</ul></li>
+</ol>
+</section>
+<section id="commit-messages-content" class="level2">
+<h2>commit messages (<a href="http://who-t.blogspot.de/2009/12/on-commit-messages.html">content</a>)</h2>
+<ul>
+<li>Why is it necessary? It may fix a bug, it may add a feature, it may improve performance, reliability, stability or a change for the sake of correctness.</li>
+<li>How does it address the issue? (High level description)</li>
+<li>What effects does the patch change? (benchmarks, side effects, etc.)</li>
+</ul>
+</section>
+</section>
+<section id="links-and-references" class="level1">
+<h1>links and references</h1>
+<section id="local-section-support" class="level2">
+<h2>local section support</h2>
+<ul>
+<li>stefan (2821)</li>
+<li>marvin (1599)</li>
+<li>knut (1537)</li>
+<li>matthias 1513)</li>
+<li>daniel (1521)</li>
+</ul>
+</section>
+<section id="tutorials-help" class="level2">
+<h2>tutorials / help</h2>
+<ul>
+<li><a href="http://git-scm.com/book/en/v2">official git book</a></li>
+<li><a href="http://marklodato.github.io/visual-git-guide/index-en.html">basic usage tutorial</a></li>
+<li><a href="http://gitready.com/">git ready</a></li>
+<li><a href="https://www.atlassian.com/git/tutorials/setting-up-a-repository">getting started and more</a></li>
+<li><a href="https://www.atlassian.com/git/tutorials/comparing-workflows">Comparing git/vc Workflows</a></li>
+<li><a href="http://www.xtreme-software.ch/files/Git%20lernen%20mit%20Beispielen.pdf">Git Cheat sheet in german</a></li>
+<li><a href="https://training.github.com/kit/downloads/github-git-cheat-sheet.pdf">Git Cheat sheet in english</a></li>
+</ul>
+</section>
+<section id="tutorials-help-cont." class="level2">
+<h2>tutorials / help (cont.)</h2>
+<ul>
+<li><a href="https://www.sourcetreeapp.com/">sourcetree</a></li>
+<li><a href="https://github.com/GSoft-SharePoint/Dynamite/wiki/Git-step-by-step:-Part-1">one sourcetree guide</a></li>
+<li><a href="http://git-scm.com/downloads">git</a></li>
+<li><a href="http://ndpsoftware.com/git-cheatsheet.html">interactice figure git</a></li>
+<li><a href="https://tortoisegit.org/download/">torgit</a></li>
+<li><a href="https://desktop.github.com/" title="GitHub Desktop">github</a></li>
+<li><a href="https://www.youtube.com/watch?v=M-O8ZNW9icQ">vc video on youtube</a></li>
+</ul>
+</section>
+</section>
+<section id="outlook-to-second-session" class="level1">
+<h1>outlook to second session</h1>
+<ul>
+<li>advanced git: merge, branch, tag, ..</li>
+<li>from local to remote</li>
+<li>collaboration with git and GFZ gitLab</li>
+</ul>
+</section>
+<section id="feedback-request" class="level1">
+<h1>Feedback request</h1>
+<section id="how-often-did-you-use-git-after-the-introduction" class="level2">
+<h2>How often did you use GIT after the introduction?</h2>
+<ol type="1">
+<li>Never, because I didn't work with files GIT is supposed to be used for (scripts, source code, ASCII files, etc...)</li>
+<li>Never but for another reason (please write here why).</li>
+<li>In the beginning a bit, then I lost it.</li>
+<li>On a regular basis.</li>
+</ol>
+</section>
+<section id="do-you-think-git-could-assist-you-with-your-personal-workflow" class="level2">
+<h2>Do you think GIT could assist you with your personal workflow?</h2>
+<ol type="1">
+<li>No, it is too confusing and makes everything just more complicated than it already is.</li>
+<li>Yes, but I don't understand how to properly implement it into my way of working.</li>
+<li>Yes, I already incorporated it successfully into my workflow.</li>
+</ol>
+</section>
+<section id="what-kind-of-topic-did-you-use-git-for" class="level2">
+<h2>What kind of topic did you use GIT for?</h2>
+<ol type="1">
+<li>I played around, nothing specific.</li>
+<li>I worked on a small personal code project.</li>
+<li>I used it for the project I am currently working on.</li>
+<li>I did team coding with other section members.</li>
+</ol>
+</section>
+<section id="what-kind-of-problems-did-you-encounter" class="level2">
+<h2>What kind of problems did you encounter?</h2>
+<ol type="1">
+<li>I had problems with the GIT-GUI (Sourcetree).</li>
+<li>I faced issues with the GIT-concept in general.</li>
+<li>I do/did not trust GIT (there is no UNDO-button).</li>
+</ol>
+</section>
+<section id="what-would-you-need-to-improve-your-git-experience" class="level2">
+<h2>What would you need to improve your GIT experience</h2>
+<ol type="1">
+<li>A deeper insight into Sourcetree.</li>
+<li>More practical oriented examples.</li>
+<li>Covering more advanced functions of GIT.</li>
+<li>Something else (please write here what)</li>
+</ol>
+</section>
+</section>
+<section id="feedback-results" class="level1">
+<h1>Feedback <strong>results</strong></h1>
+<section id="how-often-did-you-use-git-after-the-introduction-1" class="level2">
+<h2>How often did you use GIT after the introduction?</h2>
+<figure>
+<img src="./pics/q1_01.png" />
+</figure>
+</section>
+<section id="comments-i" class="level2">
+<h2>Comments I</h2>
+<ul>
+<li>Emergency report -&gt; later</li>
+<li>No need up to now</li>
+<li>I was on a field trip</li>
+<li>I did not start a new coding project</li>
+<li>I didn't work with files useful for git</li>
+<li>No time and no new work</li>
+<li>I didn't work with files for further development</li>
+</ul>
+</section>
+<section id="do-you-think-git-could-assist-you-with-your-personal-workflow-1" class="level2">
+<h2>Do you think GIT could assist you with your personal workflow?</h2>
+<figure>
+<img src="./pics/q1_02.png" />
+</figure>
+</section>
+<section id="comments-ii" class="level2">
+<h2>Comments II</h2>
+<ul>
+<li>There was no opportunity to use it up to now</li>
+<li>No, my workflow is ok, with or without it</li>
+</ul>
+</section>
+<section id="what-kind-of-topic-did-you-use-git-for-1" class="level2">
+<h2>What kind of topic did you use GIT for?</h2>
+<figure>
+<img src="./pics/q1_03.png" />
+</figure>
+</section>
+<section id="what-kind-of-problems-did-you-encounter-1" class="level2">
+<h2>What kind of problems did you encounter?</h2>
+<figure>
+<img src="./pics/q1_04.png" />
+</figure>
+</section>
+<section id="comments-iiii" class="level2">
+<h2>Comments IIII</h2>
+<ul>
+<li>I forgot to use it</li>
+<li>Change commit comments later on</li>
+<li>I did not know anything about git (was not present)</li>
+<li>When to branch or not to branch</li>
+<li>I just didn't need it</li>
+</ul>
+</section>
+<section id="what-would-you-need-to-improve-your-git-experience-1" class="level2">
+<h2>What would you need to improve your GIT experience?</h2>
+<figure>
+<img src="./pics/q1_05.png" />
+</figure>
+</section>
+<section id="comments-iiiii" class="level2">
+<h2>Comments IIIII</h2>
+<ul>
+<li>Collaboration / server</li>
+<li>Team coding</li>
+<li>Might use it when I start programming</li>
+<li>A test case</li>
+<li>Team work (text documents, latex)</li>
+<li>Time</li>
+</ul>
+</section>
+</section>
+<section id="plan-of-action" class="level1">
+<h1>Plan of action</h1>
+<section id="results-from-the-gg-spam" class="level2">
+<h2>Results from the gg-spam</h2>
+<p>&quot; ... describe for what you want to learn more about GIT?&quot;</p>
+<ul>
+<li>18 people responded</li>
+<li>Topics:
+<ul>
+<li>advanced git features</li>
+<li>team coding</li>
+<li>git and word</li>
+<li>...</li>
+</ul></li>
+</ul>
+</section>
+<section id="workshop-2--advanced-git-features" class="level2">
+<h2>Workshop 2- Advanced git features</h2>
+<ul>
+<li>topics
+<ul>
+<li>highlight git benefits</li>
+<li>recap about the git concept</li>
+<li>advanced git features</li>
+<li>a more sophisticated example</li>
+</ul></li>
+<li>target group
+<ul>
+<li><strong>everybody</strong> in the section working with a scripting (R, Matlab, ...) and/or programming (C, Fortran, ...) language</li>
+</ul></li>
+</ul>
+</section>
+<section id="workshop-2--advanced-git-features-1" class="level2">
+<h2>Workshop 2- Advanced git features</h2>
+<ul>
+<li>date
+<ul>
+<li>via doodle (see mail or scan qr-code)</li>
+</ul></li>
+</ul>
+<figure>
+<img src="./pics/qr_doodle_ws.png" />
+</figure>
+</section>
+<section id="workshop-3--team-coding-in-git" class="level2">
+<h2>Workshop 3- Team coding in git</h2>
+<ul>
+<li>topics
+<ul>
+<li>distributed code development using git</li>
+<li>intro to the GFZ gitlab server</li>
+<li>using the same code on different machines (local, hpc-glic, ...)</li>
+</ul></li>
+<li>target group
+<ul>
+<li><strong>everybody</strong> in the section working with a scripting (R, Matlab, ...) and/or programming (C, Fortran, ...) language</li>
+</ul></li>
+<li>date
+<ul>
+<li>via doodle</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="why-version-control-1" class="level1">
+<h1>why version control?</h1>
+<section id="section-8" class="level2">
+<h2></h2>
+<p>at the beginning, a version control system ...</p>
+<ul>
+<li>... traces all changes in your project</li>
+<li>... allows to go back in time easily</li>
+<li>... provides tools to compare different versions</li>
+<li>... can help you to clean the mess in your source code folder</li>
+<li>... <strong>helps</strong> you to document your changes</li>
+</ul>
+<p>and later ...</p>
+<ul>
+<li>... makes it easy to develop code with in a group</li>
+<li>... makes it easy to share code across different machines</li>
+</ul>
+</section>
+<section id="section-9" class="level2">
+<h2></h2>
+<figure>
+<img src="./pics/comparison.png" />
+</figure>
+</section>
+<section id="what-git-cannot-do-1" class="level2">
+<h2>what git cannot do</h2>
+<ul>
+<li>you still have to document the code</li>
+<li>magically solve everything (e.g. merging of branches)</li>
+<li>no backup system</li>
+</ul>
+</section>
+<section id="section-10" class="level2">
+<h2></h2>
+<figure>
+<img src="./pics/comparison.png" />
+</figure>
+</section>
+</section>
+<section id="potential-rules-for-the-section" class="level1">
+<h1>Potential rules for the section</h1>
+<section id="git-should-be-used-..." class="level2">
+<h2>git should be used ...</h2>
+<ul>
+<li>... for code with <strong>two or more</strong> developers</li>
+<li>... for code and software that is considered as a general tool for the working group</li>
+<li>... for all new Projects / PhDs / staff from the very beginning</li>
+</ul>
+<p>Recommendations:</p>
+<ul>
+<li>... for the process of a publication (figures and analysis, data preparation)</li>
+</ul>
+</section>
+</section>
+<section id="workshop-3-team-coding" class="level1">
+<h1>Workshop 3 : Team coding</h1>
+</section>
+<section id="distributed-development-with-git" class="level1">
+<h1>Distributed development with GIT</h1>
+<section id="recap" class="level2">
+<h2>Recap</h2>
+<ol type="1">
+<li>Basics of version control (e.g. GIT)</li>
+<li>Basics of branching</li>
+<li><strong>Distributed code development</strong> and resolving merge conflicts</li>
+</ol>
+</section>
+<section id="outline" class="level2">
+<h2>Outline</h2>
+<ul>
+<li>Concepts</li>
+<li>Simple example using Gitlab at GFZ</li>
+<li>Additional features and general hints</li>
+</ul>
+</section>
+<section id="what-you-will-learn" class="level2">
+<h2>What you will learn</h2>
+<ul>
+<li>how to extend local git repositories to work in a team</li>
+<li>git locally vs git on a server</li>
+<li>how to set up</li>
+<li>how to interact</li>
+</ul>
+</section>
+</section>
+<section id="concept-..." class="level1">
+<h1>Concept ...</h1>
+<section id="or-what-is-distributed-code-development" class="level2">
+<h2>... or what is distributed code development</h2>
+<ul>
+<li>code or project is hosted by a central GIT server
+<ul>
+<li>internal GFZ (GITLAB)</li>
+<li>external providers (GITHUB, BITBUCKET, GITLAB, ...)</li>
+<li>both at the same time</li>
+</ul></li>
+<li>every local working copy <strong>might</strong> have the full history of the project
+<ul>
+<li>Network access is not required to browse the history</li>
+</ul></li>
+</ul>
+</section>
+<section id="section-11" class="level2">
+<h2></h2>
+<figure>
+<img src="./pics/distributed_git.png" />
+</figure>
+</section>
+</section>
+<section id="gitlab" class="level1">
+<h1>GitLab</h1>
+<section id="create-a-new-repository" class="level2">
+<h2>create a new repository</h2>
+<ul>
+<li>login on <a href="https://git.gfz-potsdam.de">git.gfz-potsdam.de</a></li>
+<li>create new repository</li>
+<li>choose &quot;private&quot;</li>
+<li>manually add group members (probably all master)</li>
+<li>OR create a group that owns the repositories</li>
+</ul>
+</section>
+<section id="local-creation-vs-server-creation" class="level2">
+<h2>local creation vs server creation</h2>
+<p>a shared git repository can evolve in 3 ways:</p>
+<ul>
+<li>local folder <span class="math inline">→</span> git folder <span class="math inline">→</span> create server repository <span class="math inline">→</span> link local folder to server copy</li>
+<li>create server repository and &quot;download&quot; (pull) as new empty local copy</li>
+<li>&quot;download&quot; (pull) an existing server git repository to start working on it locally</li>
+</ul>
+</section>
+<section id="intern-vs.-extern" class="level2">
+<h2>intern vs. extern</h2>
+<p>there are 2 gitlab strucutres:</p>
+<ul>
+<li>intern = accessible within GFZ network (for employes)</li>
+<li>extern = for cooperating with extern project partners</li>
+</ul>
+</section>
+</section>
+<section id="extras" class="level1">
+<h1>Extras</h1>
+<section id="additional-features-of-git-webinterfaces" class="level2">
+<h2>Additional features of GIT-webinterfaces</h2>
+<ul>
+<li><a href="https://git.gfz-potsdam.de/mreich/gitIntro/issues/3">issues</a></li>
+<li><a href="https://git.gfz-potsdam.de/damage_group/damage_data/wikis/home">wiki</a></li>
+<li><a href="https://git.gfz-potsdam.de/damage_group/damage_data/graphs/master">activity (graphs)</a></li>
+<li><a href="https://git.gfz-potsdam.de/damage_group/damage_data">notifications (RSS, Mail) on commits, etc.</a></li>
+<li>comments on code</li>
+<li>continuous integration</li>
+</ul>
+</section>
+<section id="workflow-recommendations" class="level2">
+<h2>Workflow recommendations</h2>
+<ul>
+<li>commit messages</li>
+<li>commit / push frequency</li>
+<li>coding practices (contribution guidelines)
+<ul>
+<li>tab</li>
+<li>spaces</li>
+<li>commenting style</li>
+<li>indent</li>
+<li>linter</li>
+</ul></li>
+<li>readme file for gitlab</li>
+<li>common branch naming (bugfix, features, etc.)</li>
+</ul>
+</section>
+</section>
+    </div>
+  </div>
+
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        // Display the page number of the current slide
+        slideNumber: true,
+        theme: 'moon', // available themes are in /css/theme
+        transition: 'slide', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+//          { src: 'reveal.js/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; }, }
+//          { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+]});
+    </script>
+    </body>
+</html>

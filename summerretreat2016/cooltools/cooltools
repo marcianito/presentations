@@ -1,0 +1,68 @@
+# pandoc
+
+universal document converter
+converts from easy-to-write markdown, latex, html, docx (and more) to various file formats, like
+
+* tex
+* latex beamer
+* docx, odt
+* html
+* pdf
+* ebooks
+* and many more!
+
+[pandoc website](https://www.pandoc.org)
+
+(for windows, mac & linux)
+
+# little internet security
+
+## httpseveryhwere
+
+extention for brower (pc & smartphone)
+
+automatic forward to secure websites, if they exist
+
+download using add-ons of your browser or [here](<BS>https://www.eff.org/de/https-everywhere)
+
+## no-script
+
+firefox-extention which blocks active content like
+
+* javascript
+* java-applets
+* flash
+* microsoft silverlight
+
+blocking policies adjustable by user (sometimes a little annoying)
+
+useful especiall as well for getting an idea of who (which websites) want to retrieve information when visiting whatever website
+
+(what is the interest of facebook of my orders at conrad.de  !?!)
+
+[project website](https://noscript.net/)
+
+## ![](tor.png)
+
+routes ALL (if desired) connections/programs data over tor-nodes
+
+a request is redirected over sufficient, privately provided nodes (server) in order to make it (almost) impossible to be identified
+
+as a consequence you can really ensure anonymity while surfing the web
+
+useful for:
+
+* people living under restrictive governments
+* people who want to protect their privacy
+* journalist, bloggers
+
+program types:
+
+* standalone browser for pc (tor-browser)
+* all-connection solution for smartphones (orbot)
+
+[project website](https://www.torproject.org/)
+
+## TOR video
+
+[![what is tor?](http://img.youtube.com/vi/JWII85UlzKw/0.jpg)](http://www.youtube.com/watch?v=JWII85UlzKw)
